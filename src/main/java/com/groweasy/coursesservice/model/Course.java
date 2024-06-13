@@ -39,9 +39,10 @@ public class Course {
     @Column(name="date", length =30, nullable=false)
     private String date;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
+    //@NotNull
+    //@ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "category_id")
     //@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    private Category category;
+    @Column(name="category", length =150, nullable=false)
+    private String category;
 }

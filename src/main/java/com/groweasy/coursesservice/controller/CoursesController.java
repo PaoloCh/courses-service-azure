@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 //@RequestMapping("/grow-easy")
-@RequestMapping("/courses")
+@RequestMapping("/api/v1")
 public class CoursesController {
     @Autowired
     private CoursesService coursesService;
@@ -23,13 +23,13 @@ public class CoursesController {
     }
 
     //@GetMapping("/courses")
-    @GetMapping
+    @GetMapping("/courses")
     public ResponseEntity<List<Course>> getAllCourses() {
         return new ResponseEntity<List<Course>>(coursesRepository.findAll(), HttpStatus.OK);
     }
 
     //@GetMapping("/courses/{id}")
-    @GetMapping("/{id}")
+    @GetMapping("/courses/{id}")
     public ResponseEntity<Course> getCourseById(@PathVariable("id") Long id) {
         Course course =  coursesService.getCourseById(id);
         if(null == course){
@@ -41,7 +41,7 @@ public class CoursesController {
     }
 
     //@PostMapping("/courses")
-    @PostMapping
+    @PostMapping("/courses")
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         try {
             validateCourse(course);
